@@ -1,0 +1,11 @@
+[33mcommit bf1134397a276b94352024588ff385d65d5e3b39[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: mimino7 <mimino7@mail.ru>
+Date:   Thu Jul 14 12:16:20 2022 +0300
+
+    added_store_userReducer_packageJson
+
+[33mcommit 572752a82039ee443adb15a96707fc94b5bee719[m
+Author: mimino7 <mimino7@mail.ru>
+Date:   Thu Jul 7 18:09:26 2022 +0300
+
+    Initialize project using Create React App
