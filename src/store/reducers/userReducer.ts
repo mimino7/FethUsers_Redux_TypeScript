@@ -10,10 +10,19 @@
     error: null | string;
   }
 
-  interface UserAction {
-    type: string;
-    payload?: any;
+  //у каждого action разный payload, поэтому создаем interface для каждого action
+  interface FetchUsersAction {
+    type: FETH_USERS;
   }
+  interface FetchUsersSuccessAction {
+    type: FETH_USERS;
+    payload: any[];
+  }
+  interface FetchUsersErrorAction {
+    type: FETH_USERS;
+    payload: string;
+  }
+  
   
 const initialState: UserState = {
   users: [],
