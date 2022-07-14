@@ -1,7 +1,4 @@
   
-  const FETH_USERS = "FETH_USERS";
-  const FETH_USERS_SUCCESS = "FETH_USERS_SUCCESS";
-  const FETH_USERS_ERROR = "FETH_USERS_ERROR";
   
   
   interface UserState {
@@ -10,19 +7,25 @@
     error: null | string;
   }
 
+  enum UsersActionTypes {   //создаем перечисление, которое содержит все типы actions  
+    FETH_USERS = "FETH_USERS",
+    FETH_USERS_SUCCESS = "FETH_USERS_SUCCESS",
+    FETH_USERS_ERROR = "FETH_USERS_ERROR",
+  }
+
   //у каждого action разный payload, поэтому создаем interface для каждого action
   interface FetchUsersAction {
-    type: FETH_USERS;
+    type: UsersActionTypes.FETH_USERS;
   }
   interface FetchUsersSuccessAction {
-    type: FETH_USERS;
+    type: UsersActionTypes.FETH_USERS_SUCCESS;
     payload: any[];
   }
   interface FetchUsersErrorAction {
-    type: FETH_USERS;
+    type: UsersActionTypes.FETH_USERS_ERROR;
     payload: string;
   }
-  
+  type UserAction = FetchUsersAction | FetchUsersSuccessAction | FetchUsersErrorAction;
   
 const initialState: UserState = {
   users: [],
@@ -32,11 +35,11 @@ const initialState: UserState = {
 
 export const userReducer = (state = initialState, action: UserAction): UserState => {
   switch (action.type) {
-    case FETH_USERS:
+    case UsersActionTypes.FETH_USERS:
       return { loading: true, error: null, users: []};
-    case FETH_USERS_SUCCESS:
+    case UsersActionTypes.FETH_USERS_SUCCESS:
       return { loading: false, error: null, users: action.payload};
-    case FETH_USERS_ERROR:
+    case UsersActionTypes.FETH_USERS_ERROR:
       return { loading: false, error: action.payload, users: []};
     default:
       return state;
