@@ -6,9 +6,9 @@ const UserList: React.FC = () => {
 
 //const state = useSelector(state => state) // HO!!! useSelector с типами не дружит (не видит state.user), поэтому для типизации сделаем свой HOOCK
 
-const state = useTypedSelector(state => state.user) // используем вместо обычного useSelector свой HOOK -типизированный useTypedSelector
+const {error, loading, users} = useTypedSelector(state => state.user) // используем вместо обычного useSelector свой HOOK -типизированный useTypedSelector
 
-console.log(state);
+console.log(users);
 
   return (
         
