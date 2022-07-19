@@ -3,7 +3,7 @@ import { Dispatch } from 'react';
 import { UserAction, UsersActionTypes } from './../../types/users';
 
 
-export const FetchUsers = () => {
+export const fetchUsers = () => {
     return async (dispatch: Dispatch<UserAction>) => { // типизируем dispatch
       try {
         dispatch({type: UsersActionTypes.FETH_USERS})
