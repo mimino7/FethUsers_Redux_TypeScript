@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { fetchUsers } from "../store/actions/user";
 
@@ -9,9 +10,10 @@ const UserList: React.FC = () => {
 
   const { error, loading, users } = useTypedSelector((state) => state.user); // используем вместо обычного useSelector свой HOOK -типизированный useTypedSelector
 
-  const dispatch: any = useDispatch();
+  const {fetchUsers} = useActions() // используем свой hook для упрощения кода
+
   useEffect(() => {
-    dispatch(fetchUsers());
+    fetchUsers();
   }, []);
   console.log(users);
 
@@ -33,7 +35,7 @@ const UserList: React.FC = () => {
   return (
     <div>
       {users.map((user) => (
-        <div>{user.name}</div>
+        <div key={user.id}>{user.name}</div>
       ))}
     </div>
   );
