@@ -31,7 +31,7 @@ interface FetchPhotosPageAction {
 }
 
 // связываем все Actions в один тип
-export type PhotoAction =
+export type PhotosAction =
   | FetchPhotosAction
   | FetchPhotosSuccessAction
   | FetchPhotosErrorAction
