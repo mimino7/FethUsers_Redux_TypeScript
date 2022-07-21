@@ -7,6 +7,10 @@ const PhotoList: FC = () => {
   const { photos, loading, error, limit, page } = useTypedSelector(
     (state) => state.photo
   );
+
+  const {fetchPhotos} = useActions()
+
+  console.log(photos);
   
   return <div>PhotoList</div>;
 };
