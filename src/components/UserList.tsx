@@ -10,7 +10,7 @@ const UserList: React.FC = () => {
 
   const { error, loading, users } = useTypedSelector((state) => state.user); // используем вместо обычного useSelector свой HOOK -типизированный useTypedSelector
 
-  const {fetchUsers} = useActions() // используем свой hook для упрощения кода
+  const { fetchUsers } = useActions(); // используем свой hook для упрощения кода
 
   useEffect(() => {
     fetchUsers();

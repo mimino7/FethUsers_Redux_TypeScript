@@ -23,6 +23,6 @@ export const fetchPhotos = (page = 1, limit = 10) => {
   };
 };
 
-export function setPhotoPage (page: number): PhotosAction {
-  return {type: PhotoActionsTypes.FETCH_PHOTOS_PAGE, payload: page}
+export function setPhotoPage(page: number): PhotosAction {
+  return { type: PhotoActionsTypes.FETCH_PHOTOS_PAGE, payload: page };
 }
