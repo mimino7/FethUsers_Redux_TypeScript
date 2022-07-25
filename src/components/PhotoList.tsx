@@ -1,19 +1,21 @@
 import React, { FC, useEffect } from "react";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useActions } from "../hooks/useActions";
+import { getPages } from "../math/mathFunc";
 
 const PhotoList: FC = () => {
   const { photos, loading, error, limit, page } = useTypedSelector(
     (state) => state.photo
   );
+console.log(page);
 
-  const { fetchPhotos } = useActions();
+  const { fetchPhotos, setPhotoPage } = useActions();
+
+  const rowPages = getPages(8);
 
   useEffect(() => {
-    fetchPhotos();
-  }, []);
-
-  console.log(photos);
+    fetchPhotos(page, limit);
+  }, [page]);
 
   return (
     <div>
@@ -23,6 +25,17 @@ const PhotoList: FC = () => {
           {ph.title}
         </div>
       ))}
+      <div className="panag__wrap">
+        {rowPages.map((p) => (
+          <div
+            onClick={() => setPhotoPage(p)}
+            className={p === page ? "panag_item active" : "panag_item"}
+            key={p}
+          >
+            {p}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
