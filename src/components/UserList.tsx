@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { fetchUsers } from "../store/actions/user";
 
 const UserList: React.FC = () => {
   //const state = useSelector(state => state) // HO!!! useSelector с типами не дружит (не видит state.user), поэтому для типизации сделаем свой HOOCK
@@ -15,7 +12,6 @@ const UserList: React.FC = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-  console.log(users);
 
   if (loading) {
     return (
@@ -33,10 +29,13 @@ const UserList: React.FC = () => {
   }
 
   return (
-    <div>
-      {users.map((user) => (
-        <div key={user.id}>{user.name}</div>
-      ))}
+    <div className="user__wrap">
+      {users &&
+        users.map((user) => (
+          <div className="user__item" key={user.id}>
+            {user.username}
+          </div>
+        ))}
     </div>
   );
 };
